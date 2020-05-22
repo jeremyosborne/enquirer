@@ -93,7 +93,7 @@ interface SortPromptOptions extends BasePromptOptions {
   numbered?: boolean
 }
 
-export type PromptOptions =
+type PromptOptions =
   | BasePromptOptions
   | ArrayPromptOptions
   | BooleanPromptOptions
@@ -160,6 +160,16 @@ declare class Enquirer<T = object> extends EventEmitter {
 }
 
 declare namespace Enquirer {
+  
+  export type PromptOptions =
+  | BasePromptOptions
+  | ArrayPromptOptions
+  | BooleanPromptOptions
+  | StringPromptOptions
+  | NumberPromptOptions
+  | SnippetPromptOptions
+  | SortPromptOptions
+  
   function prompt<T = object>(
     questions:
       | PromptOptions
