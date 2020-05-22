@@ -93,7 +93,7 @@ interface SortPromptOptions extends BasePromptOptions {
   numbered?: boolean
 }
 
-type PromptOptions =
+export type PromptOptions =
   | BasePromptOptions
   | ArrayPromptOptions
   | BooleanPromptOptions
@@ -108,6 +108,18 @@ declare class BasePrompt extends EventEmitter {
     render(): void;
 
     run(): Promise<any>;
+  
+    cursorHide: () => void;
+    state: {
+      size: number;
+      submitted: boolean;
+    };
+    keypress: (char: string | null, evt: { name: string }) => void;
+    clear: (val: number) => void;
+    write: (val: string) => void;
+    restore: () => void;
+    prefix: () => string;
+    submit: () => void;    
   }
 
 declare class Enquirer<T = object> extends EventEmitter {
